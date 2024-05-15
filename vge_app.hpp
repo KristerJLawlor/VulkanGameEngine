@@ -1,6 +1,7 @@
 #pragma once
 
 #include "vge_window.hpp"
+#include "vge_pipeline.hpp"
 
 namespace vge {
 	class VgeApp {
@@ -12,6 +13,7 @@ namespace vge {
 
 		private:
 			VgeWindow VgeWindow{ WIDTH, HEIGHT, "Hello Vulkan!" };
+			VgePipeline vgePipline{ "simple_shader.vert.spv", "simple_shader.frag.spv" };
 
 	};
 }

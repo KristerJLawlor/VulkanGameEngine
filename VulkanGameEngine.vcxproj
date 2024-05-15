@@ -137,11 +137,20 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="vge_app.cpp" />
+    <ClCompile Include="vge_pipeline.cpp" />
     <ClCompile Include="vge_window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vge_app.hpp" />
+    <ClInclude Include="vge_pipeline.hpp" />
     <ClInclude Include="vge_window.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="compile.bat" />
+    <None Include="simple_shader.frag" />
+    <None Include="simple_shader.frag.spv" />
+    <None Include="simple_shader.vert" />
+    <None Include="simple_shader.vert.spv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
