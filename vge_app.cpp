@@ -3,7 +3,7 @@
 namespace vge {
 	void VgeApp::run() {
 
-		while (!VgeWindow.shouldClose()) {
+		while (!vgeWindow.shouldClose()) {
 			glfwPollEvents();
 		}
 	}

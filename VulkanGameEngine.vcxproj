@@ -136,11 +136,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="vge_device.cpp" />
     <ClCompile Include="vge_app.cpp" />
     <ClCompile Include="vge_pipeline.cpp" />
     <ClCompile Include="vge_window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="vge_device.hpp" />
     <ClInclude Include="vge_app.hpp" />
     <ClInclude Include="vge_pipeline.hpp" />
     <ClInclude Include="vge_window.hpp" />

@@ -7,9 +7,14 @@
 
 namespace vge {
 
-	//pipeline constructor
-	VgePipeline::VgePipeline(const std::string& vertFilepath, const std::string& fragFilepath) {
-		createGraphicsPipeline(vertFilepath, fragFilepath);
+	//graphics pipeline constructor
+	VgePipeline::VgePipeline(
+		VgeDevice& device,
+		const std::string& vertFilepath,
+		const std::string& fragFilepath,
+		const PipelineConfigInfo& configInfo) : vgeDevice{ device } {
+
+			createGraphicsPipeline(vertFilepath, fragFilepath, configInfo);
 	}
 
 	std::vector<char> VgePipeline::readFile(const std::string& filepath) {
@@ -32,7 +37,9 @@ namespace vge {
 	}
 
 	void VgePipeline::createGraphicsPipeline(
-		const std::string& vertFilepath, const std::string& fragFilepath) {
+		const std::string& vertFilepath, 
+		const std::string& fragFilepath,
+		const PipelineConfigInfo& configInfo) {
 			
 		auto vertCode = readFile(vertFilepath);
 		auto fragCode = readFile(fragFilepath);
@@ -41,5 +48,23 @@ namespace vge {
 		std::cout << "fragment shader code size: " << fragCode.size() << std::endl;
 	}
 
+	void VgePipeline::createShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule) {
 
+		//create struct to hold paramters
+		VkShaderModuleCreateInfo createInfo{};
+		createInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;	//struct type
+		createInfo.codeSize = code.size();	//size of vector array
+		createInfo.pCode = reinterpret_cast<const uint32_t*>(code.data());	//pointer to the code. needs to be cast to uint32_t, since vulkan expects a uint32_t array instead of a char array
+		
+		//create shader module by passing pointer of createInfo as a parameter
+		if (vkCreateShaderModule(vgeDevice.device(), &createInfo, nullptr, shaderModule) != VK_SUCCESS) {
+			throw std::runtime_error("failed to create shader module");
+		}
+	}
+
+	PipelineConfigInfo VgePipeline::defaultPipelineConfigInfo(uint32_t width, uint32_t height) {
+		PipelineConfigInfo configInfo{};
+
+		return configInfo;
+	}
 }

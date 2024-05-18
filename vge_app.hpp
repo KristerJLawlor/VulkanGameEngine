@@ -2,6 +2,7 @@
 
 #include "vge_window.hpp"
 #include "vge_pipeline.hpp"
+#include "vge_device.hpp"
 
 namespace vge {
 	class VgeApp {
@@ -12,8 +13,12 @@ namespace vge {
 			void run();
 
 		private:
-			VgeWindow VgeWindow{ WIDTH, HEIGHT, "Hello Vulkan!" };
-			VgePipeline vgePipline{ "simple_shader.vert.spv", "simple_shader.frag.spv" };
+			VgeWindow vgeWindow{ WIDTH, HEIGHT, "Hello Vulkan!" };
+			VgeDevice vgeDevice{ vgeWindow };
+			VgePipeline vgePipline{
+				vgeDevice, 
+				"simple_shader.vert.spv", "simple_shader.frag.spv", 
+				VgePipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
 
 	};
 }

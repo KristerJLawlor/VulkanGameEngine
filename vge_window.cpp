@@ -1,5 +1,7 @@
 #include "vge_window.hpp"
 
+//std lib
+#include <stdexcept>
 namespace vge {
 	//window constructor
 	VgeWindow::VgeWindow(int w, int h, std::string name) : width{ w }, height{ h }, windowName{ name } {
@@ -19,5 +21,13 @@ namespace vge {
 
 		//initialize window pointer by calling the GLFW Create Window command
 		window = glfwCreateWindow(width, height, windowName.c_str(), nullptr, nullptr);	//copy constructor must be deleted after invokation
+	}
+
+	void VgeWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface)
+	{
+		if (glfwCreateWindowSurface(instance, window, nullptr, surface) != VK_SUCCESS)
+		{
+			throw std::runtime_error("failed to create window surface");
+		}
 	}
 }
