@@ -17,7 +17,7 @@ namespace vge {
 			VgeDevice vgeDevice{ vgeWindow };
 			VgePipeline vgePipline{
 				vgeDevice, 
-				"simple_shader.vert.spv", "simple_shader.frag.spv", 
+				"shaders/simple_shader.vert.spv", "shaders/simple_shader.frag.spv", 
 				VgePipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
 
 	};

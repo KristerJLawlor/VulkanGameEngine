@@ -70,8 +70,7 @@
               "RelativeToolTip": "vge_window.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-15T00:08:35.623Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T00:08:35.623Z"
             },
             {
               "$type": "Document",
@@ -83,8 +82,7 @@
               "RelativeToolTip": "vge_window.hpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-14T23:58:30.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-14T23:58:30.673Z"
             },
             {
               "$type": "Document",
@@ -96,8 +94,7 @@
               "RelativeToolTip": "vge_pipeline.hpp",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAACsAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-15T02:08:14.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T02:08:14.313Z"
             },
             {
               "$type": "Document",
@@ -109,8 +106,7 @@
               "RelativeToolTip": "vge_device.hpp",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAAF8AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-17T20:48:10.253Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-17T20:48:10.253Z"
             },
             {
               "$type": "Document",
@@ -122,8 +118,7 @@
               "RelativeToolTip": "vge_app.hpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-15T00:34:02.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T00:34:02.511Z"
             },
             {
               "$type": "Document",
@@ -135,8 +130,7 @@
               "RelativeToolTip": "vge_app.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-15T00:44:15.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T00:44:15.357Z"
             },
             {
               "$type": "Document",
@@ -146,7 +140,7 @@
               "RelativeDocumentMoniker": "vge_device.cpp",
               "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_device.cpp",
               "RelativeToolTip": "vge_device.cpp",
-              "ViewState": "AQIAAHUAAAAAAAAAAAAAAIcAAAAnAAAA",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAAAH0AAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-17T20:48:51.45Z",
               "EditorCaption": ""
@@ -161,8 +155,7 @@
               "RelativeToolTip": "vge_pipeline.cpp",
               "ViewState": "AQIAAB4AAAAAAAAAAAAAAEMAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-15T02:15:39.986Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T02:15:39.986Z"
             },
             {
               "$type": "Document",
@@ -174,8 +167,7 @@
               "RelativeToolTip": "simple_shader.vert",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-05-15T01:44:37.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T01:44:37.101Z"
             },
             {
               "$type": "Document",

@@ -1,6 +1,4 @@
 ﻿  main.cpp
   vge_app.cpp
-  vge_device.cpp
-  vge_pipeline.cpp
   Generating Code...
   VulkanGameEngine.vcxproj -> F:\Vulkan\VulkanGameEngine\VulkanGameEngine\x64\Debug\VulkanGameEngine.exe
