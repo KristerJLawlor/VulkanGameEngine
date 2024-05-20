@@ -3,8 +3,48 @@
   "WorkspaceRootPath": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\Source\\vge_pipeline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\vge_pipeline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_device.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:vge_device.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_app.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:vge_app.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_pipeline.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:vge_pipeline.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_app.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:vge_app.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_pipeline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:vge_pipeline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_device.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:vge_device.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:vge_window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_window.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:vge_window.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\simple_shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:simple_shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\simple_shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|solutionrelative:simple_shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD84249B-2408-4617-961B-255494B85AE1}|VulkanGameEngine.vcxproj|F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\compile.bat||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -18,24 +58,152 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "vge_pipeline.cpp",
-              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\Source\\vge_pipeline.cpp",
-              "RelativeDocumentMoniker": "Source\\vge_pipeline.cpp",
-              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\Source\\vge_pipeline.cpp",
-              "RelativeToolTip": "Source\\vge_pipeline.cpp",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAwwBIAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "vge_window.cpp",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_window.cpp",
+              "RelativeDocumentMoniker": "vge_window.cpp",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_window.cpp",
+              "RelativeToolTip": "vge_window.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-20T19:46:38.756Z",
+              "WhenOpened": "2024-05-15T00:08:35.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "vge_window.hpp",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_window.hpp",
+              "RelativeDocumentMoniker": "vge_window.hpp",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_window.hpp",
+              "RelativeToolTip": "vge_window.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-14T23:58:30.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "vge_pipeline.hpp",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_pipeline.hpp",
+              "RelativeDocumentMoniker": "vge_pipeline.hpp",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_pipeline.hpp",
+              "RelativeToolTip": "vge_pipeline.hpp",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACsAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-15T02:08:14.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "vge_device.hpp",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_device.hpp",
+              "RelativeDocumentMoniker": "vge_device.hpp",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_device.hpp",
+              "RelativeToolTip": "vge_device.hpp",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAF8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-17T20:48:10.253Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "vge_app.hpp",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_app.hpp",
+              "RelativeDocumentMoniker": "vge_app.hpp",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_app.hpp",
+              "RelativeToolTip": "vge_app.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-15T00:34:02.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "vge_app.cpp",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_app.cpp",
+              "RelativeDocumentMoniker": "vge_app.cpp",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_app.cpp",
+              "RelativeToolTip": "vge_app.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-15T00:44:15.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "vge_device.cpp",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_device.cpp",
+              "RelativeDocumentMoniker": "vge_device.cpp",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_device.cpp",
+              "RelativeToolTip": "vge_device.cpp",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAAAIcAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-17T20:48:51.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "vge_pipeline.cpp",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_pipeline.cpp",
+              "RelativeDocumentMoniker": "vge_pipeline.cpp",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\vge_pipeline.cpp",
+              "RelativeToolTip": "vge_pipeline.cpp",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAAEMAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-15T02:15:39.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "simple_shader.vert",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\simple_shader.vert",
+              "RelativeDocumentMoniker": "simple_shader.vert",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\simple_shader.vert",
+              "RelativeToolTip": "simple_shader.vert",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-15T01:44:37.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "simple_shader.frag",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\simple_shader.frag",
+              "RelativeDocumentMoniker": "simple_shader.frag",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\simple_shader.frag",
+              "RelativeToolTip": "simple_shader.frag",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-15T01:51:40.213Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "main.cpp",
+              "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-14T23:04:08.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "compile.bat",
               "DocumentMoniker": "F:\\Vulkan\\VulkanGameEngine\\VulkanGameEngine\\compile.bat",
               "RelativeDocumentMoniker": "compile.bat",
@@ -43,8 +211,7 @@
               "RelativeToolTip": "compile.bat",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAFAAAA",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE6SURBVDhPY6AI/P//H8oiHzBWlpfeBxqlAOWTCBgfMJGi2ds3AIUG660sL/n/69cvDLznyJn/uw6dwioHwyC9QBeggqu3HzDsOHiS4d37Dwxv371nWL/9AMO5yzegspgAwwAWJiaGb9\u002B\u002BM5joaTKYGmgxfPv\u002BjYGFBUMZHGDI/Pn7l\u002BH3718Mf//9ZfgHZP/5/Zvhz5\u002B/UFlMgGHAz58/GRiB9IGjpxj2HTnBwAjknDp7HuiSHxAFaADDACNdDYYwPzcGPh4uhr9Am5\u002B9eMrw6Mljho6\u002BiQw3bt6GqkIAnJ4L9HJh8HS2Yfj44SNDW005w4d37xg4ONigsgiAO3SA4OtXYAACVeQWlTKwsjJjTbl4DVBXVWaoKMpnsLG0YOjtaGNQVMBMc8CkXAxMyoxkJuX/D6CMAQMMDABIjqFEM6osUwAAAABJRU5ErkJggg==",
-              "WhenOpened": "2024-05-15T02:00:48.637Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-15T02:00:48.637Z"
             }
           ]
         }
