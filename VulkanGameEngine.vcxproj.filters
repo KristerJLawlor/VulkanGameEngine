@@ -18,50 +18,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vge_window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vge_app.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vge_pipeline.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vge_device.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="vge_window.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vge_app.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vge_pipeline.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vge_device.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="simple_shader.vert">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="simple_shader.frag">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="compile.bat">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="simple_shader.vert.spv">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="simple_shader.frag.spv">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
