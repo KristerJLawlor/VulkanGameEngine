@@ -7,8 +7,21 @@
 
 namespace vge {
 
-	//data used to configure pipeline
-	struct PipelineConfigInfo {	};
+	//data used to configure pipeline in input assembly stage
+	struct PipelineConfigInfo {
+		VkViewport viewport;
+		VkRect2D scissor;
+		VkPipelineViewportStateCreateInfo viewportInfo;
+		VkPipelineInputAssemblyStateCreateInfo inputAssemblyInfo;
+		VkPipelineRasterizationStateCreateInfo rasterizationInfo;
+		VkPipelineMultisampleStateCreateInfo multisampleInfo;
+		VkPipelineColorBlendAttachmentState colorBlendAttachment;
+		VkPipelineColorBlendStateCreateInfo colorBlendInfo;
+		VkPipelineDepthStencilStateCreateInfo depthStencilInfo;
+		VkPipelineLayout pipelineLayout = nullptr;
+		VkRenderPass renderPass = nullptr;
+		uint32_t subpass = 0;
+	};
 
 	class VgePipeline {
 	public:
@@ -18,7 +31,7 @@ namespace vge {
 			const std::string& fragFilepath, 
 			const PipelineConfigInfo& configInfo);
 		//destructor
-		~VgePipeline() {};
+		~VgePipeline();
 
 		//delete to avoid duplicating pointers to vulkan objects
 		VgePipeline(const VgePipeline&) = delete;
