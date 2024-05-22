@@ -30,12 +30,14 @@ namespace vge {
 			const std::string& vertFilepath, 
 			const std::string& fragFilepath, 
 			const PipelineConfigInfo& configInfo);
+
 		//destructor
 		~VgePipeline();
-
 		//delete to avoid duplicating pointers to vulkan objects
 		VgePipeline(const VgePipeline&) = delete;
 		void operator=(const VgePipeline&) = delete;
+
+		void bind(VkCommandBuffer commandBuffer);
 
 		static PipelineConfigInfo defaultPipelineConfigInfo(uint32_t width, uint32_t height);
 

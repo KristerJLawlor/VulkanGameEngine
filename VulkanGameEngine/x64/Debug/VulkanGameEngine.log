@@ -1,2 +1,7 @@
-﻿  vge_app.cpp
+﻿  main.cpp
+  vge_app.cpp
+  vge_pipeline.cpp
+F:\Vulkan\VulkanGameEngine\VulkanGameEngine\source\vge_app.cpp(109,51): warning C4806: '!=': unsafe operation: no value of type 'bool' promoted to type 'VkResult' can equal the given constant
+  vge_swapchain.cpp
+  Generating Code...
   VulkanGameEngine.vcxproj -> F:\Vulkan\VulkanGameEngine\VulkanGameEngine\x64\Debug\VulkanGameEngine.exe

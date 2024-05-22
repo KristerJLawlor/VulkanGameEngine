@@ -137,6 +137,12 @@ namespace vge {
 		}
 	}
 
+
+	void VgePipeline::bind(VkCommandBuffer commandBuffer) {
+		vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
+	}
+
+
 	//input assembler takes list of vertices and groups them in to geometry
 	PipelineConfigInfo VgePipeline::defaultPipelineConfigInfo(uint32_t width, uint32_t height) {
 		PipelineConfigInfo configInfo{};

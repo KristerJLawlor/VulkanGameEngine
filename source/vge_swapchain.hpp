@@ -13,7 +13,7 @@ namespace vge {
 
     class VgeSwapChain {
     public:
-        static constexpr int MAX_FRAMES_IN_FLIGHT = 2;
+        static constexpr int MAX_FRAMES_IN_FLIGHT = 2;  //limits 2 command buffers to the devices graphics queue at once
 
         VgeSwapChain(VgeDevice& deviceRef, VkExtent2D windowExtent);
         ~VgeSwapChain();
