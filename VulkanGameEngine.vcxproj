@@ -139,6 +139,7 @@
     <ClCompile Include="source\vge_device.cpp" />
     <ClCompile Include="source\vge_app.cpp" />
     <ClCompile Include="source\vge_pipeline.cpp" />
+    <ClCompile Include="source\vge_swapchain.cpp" />
     <ClCompile Include="source\vge_window.cpp" />
   </ItemGroup>
   <ItemGroup>
