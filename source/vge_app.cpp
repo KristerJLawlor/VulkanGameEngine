@@ -22,6 +22,8 @@ namespace vge {
 			glfwPollEvents();
 			drawFrame();
 		}
+
+		vkDeviceWaitIdle(vgeDevice.device());
 	}
 
 	void VgeApp::createPipelineLayout() {
@@ -54,6 +56,7 @@ namespace vge {
 	}
 
 	void VgeApp::createCommandBuffers() {
+
 		commandBuffers.resize(vgeSwapChain.imageCount());
 
 		VkCommandBufferAllocateInfo allocInfo{};
@@ -65,7 +68,7 @@ namespace vge {
 		if (vkAllocateCommandBuffers(vgeDevice.device(), &allocInfo, commandBuffers.data()) !=
 			VK_SUCCESS)
 		{
-			throw::std::exception("failed to allocate command buffers!");
+			throw::std::runtime_error("failed to allocate command buffers!");
 		}
 
 		for (int i = 0; i < commandBuffers.size(); i++)
@@ -74,7 +77,7 @@ namespace vge {
 			beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 
 			if (vkBeginCommandBuffer(commandBuffers[i], &beginInfo) != VK_SUCCESS) {
-				throw::std::exception("failed to begin recording command buffer!");
+				throw::std::runtime_error("failed to begin recording command buffer!");
 			}
 
 			VkRenderPassBeginInfo renderPassInfo{};
@@ -106,7 +109,7 @@ namespace vge {
 	void VgeApp::drawFrame() {
 		uint32_t imageIndex;
 		auto result = vgeSwapChain.acquireNextImage(&imageIndex);
-		if (result != VK_SUCCESS && result != result != VK_SUBOPTIMAL_KHR) {
+		if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR) {
 			throw std::runtime_error("failed to acquire swap chain image!");
 		}
 

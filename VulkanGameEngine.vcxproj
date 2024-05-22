@@ -149,7 +149,7 @@
     <ClInclude Include="source\vge_window.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="compile.bat" />
+    <None Include="shaders\compile.bat" />
     <None Include="shaders\simple_shader.frag" />
     <None Include="shaders\simple_shader.frag.spv" />
     <None Include="shaders\simple_shader.vert" />
