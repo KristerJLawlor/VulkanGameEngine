@@ -38,4 +38,8 @@ Thumbs.db
 
 # Editor Generated Files #
 ##########################
-*.icph
+*.ipch
+*.suo
+*.user
+*.ncb
+*.sbr
