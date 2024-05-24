@@ -531,4 +531,4 @@ void VgeDevice::createImageWithInfo(
   }
 }
 
-}  // namespace lve
+}  

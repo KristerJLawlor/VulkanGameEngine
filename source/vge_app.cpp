@@ -7,6 +7,7 @@
 namespace vge {
 
 	VgeApp::VgeApp() {
+		loadModels();
 		createPipelineLayout();
 		createPipeline();
 		createCommandBuffers();
@@ -24,6 +25,16 @@ namespace vge {
 		}
 
 		vkDeviceWaitIdle(vgeDevice.device());
+	}
+
+	void VgeApp::loadModels() {
+		std::vector<VgeModel::Vertex> vertices{
+			{{0.0f, -0.5f}},
+			{{0.5f, 0.5f}},
+			{{-0.5f, 0.5f}}
+		};
+
+		vgeModel = std::make_unique<VgeModel>(vgeDevice, vertices);
 	}
 
 	void VgeApp::createPipelineLayout() {
@@ -97,7 +108,8 @@ namespace vge {
 			vkCmdBeginRenderPass(commandBuffers[i], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
 			vgePipeline->bind(commandBuffers[i]);
-			vkCmdDraw(commandBuffers[i], 3, 1, 0, 0);
+			vgeModel->bind(commandBuffers[i]);
+			vgeModel->draw(commandBuffers[i]);
 
 			vkCmdEndRenderPass(commandBuffers[i]);
 			if (vkEndCommandBuffer(commandBuffers[i]) != VK_SUCCESS) {

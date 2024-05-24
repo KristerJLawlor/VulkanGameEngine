@@ -4,6 +4,7 @@
 #include "vge_pipeline.hpp"
 #include "vge_device.hpp"
 #include "vge_swapchain.hpp"
+#include "vge_model.hpp"
 
 //std lib
 #include <memory>
@@ -29,6 +30,7 @@ namespace vge {
 
 		private:
 		//functions
+			void loadModels();
 			void createPipelineLayout();
 			void createPipeline();
 			void createCommandBuffers();
@@ -42,6 +44,6 @@ namespace vge {
 			std::unique_ptr<VgePipeline> vgePipeline;
 			VkPipelineLayout pipelineLayout;
 			std::vector<VkCommandBuffer> commandBuffers;
-
+			std::unique_ptr<VgeModel> vgeModel;
 	};
 }
