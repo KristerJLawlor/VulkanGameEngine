@@ -10,6 +10,8 @@
 #include <memory>
 #include <vector>
 
+#include "glm/glm.hpp"
+
 namespace vge {
 	class VgeApp {
 		public:
@@ -27,6 +29,11 @@ namespace vge {
 			VgeApp& operator=(const VgeApp&) = delete;
 
 			void run();
+			void Sierpinski(std::vector<VgeModel::Vertex> &vertices,
+				int depth,
+				glm::vec2 left,
+				glm::vec2 right,
+				glm::vec2 top);
 
 		private:
 		//functions
