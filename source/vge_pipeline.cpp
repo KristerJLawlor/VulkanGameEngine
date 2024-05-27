@@ -80,7 +80,6 @@ namespace vge {
 
 		auto bindingDescriptions = VgeModel::Vertex::getBindingDescriptions();
 		auto attributeDescriptions = VgeModel::Vertex::getAttributeDescriptions();
-
 		VkPipelineVertexInputStateCreateInfo vertexInputInfo{};	//struct used to describe how to interpret vertex buffer data
 		vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 		vertexInputInfo.vertexAttributeDescriptionCount =
@@ -90,13 +89,6 @@ namespace vge {
 		vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 		vertexInputInfo.pVertexBindingDescriptions = bindingDescriptions.data();
 
-		VkPipelineViewportStateCreateInfo viewportInfo{};
-		viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
-		viewportInfo.viewportCount = 1;
-		viewportInfo.pViewports = &configInfo.viewport;
-		viewportInfo.scissorCount = 1;
-		viewportInfo.pScissors = &configInfo.scissor;
-
 		//will use all above info to make the graphics pipeline object
 		VkGraphicsPipelineCreateInfo pipelineInfo{};
 		pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
@@ -104,13 +96,13 @@ namespace vge {
 		pipelineInfo.pStages = shaderStages;
 		pipelineInfo.pVertexInputState = &vertexInputInfo;
 		pipelineInfo.pInputAssemblyState = &configInfo.inputAssemblyInfo;
-		pipelineInfo.pViewportState = &viewportInfo;
+		pipelineInfo.pViewportState = &configInfo.viewportInfo;
 		pipelineInfo.pRasterizationState = &configInfo.rasterizationInfo;
 		pipelineInfo.pMultisampleState = &configInfo.multisampleInfo;
 
 		pipelineInfo.pColorBlendState = &configInfo.colorBlendInfo;
 		pipelineInfo.pDepthStencilState = &configInfo.depthStencilInfo;
-		pipelineInfo.pDynamicState = nullptr;
+		pipelineInfo.pDynamicState = &configInfo.dynamicStateInfo;
 
 		pipelineInfo.layout = configInfo.pipelineLayout;
 		pipelineInfo.renderPass = configInfo.renderPass;
@@ -120,7 +112,8 @@ namespace vge {
 		pipelineInfo.basePipelineHandle = VK_NULL_HANDLE;
 
 		//check if the graphics pipeline succeeded or not
-		if (vkCreateGraphicsPipelines(vgeDevice.device(),
+		if (vkCreateGraphicsPipelines(
+				vgeDevice.device(),
 				VK_NULL_HANDLE, 
 				1, 
 				&pipelineInfo, 								
@@ -151,25 +144,18 @@ namespace vge {
 
 
 	//input assembler takes list of vertices and groups them in to geometry
-	PipelineConfigInfo VgePipeline::defaultPipelineConfigInfo(uint32_t width, uint32_t height) {
-		PipelineConfigInfo configInfo{};
+	void VgePipeline::defaultPipelineConfigInfo(PipelineConfigInfo &configInfo) {
 
 		//define the input assembly behavior 
 		configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 		configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;	//specifies how the list will be interpreted. In this case, it will form triangles with given vertices
 		configInfo.inputAssemblyInfo.primitiveRestartEnable = VK_FALSE;	//tell the list to produce only connected triangle strip if false. True if desire separate triangles
 
-		//viewport describes transformation between pipeline output and target image
-		configInfo.viewport.x = 0.0f;
-		configInfo.viewport.y = 0.0f;
-		configInfo.viewport.width = static_cast<float>(width);
-		configInfo.viewport.height = static_cast<float>(height);
-		configInfo.viewport.minDepth = 0.0f;
-		configInfo.viewport.maxDepth = 1.0f;
-
-		//any values outside of the scissor offset will be cut
-		configInfo.scissor.offset = { 0, 0 };
-		configInfo.scissor.extent = { width, height };
+		configInfo.viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
+		configInfo.viewportInfo.viewportCount = 1;
+		configInfo.viewportInfo.pViewports = nullptr;
+		configInfo.viewportInfo.scissorCount = 1;
+		configInfo.viewportInfo.pScissors = nullptr;
 
 		//Rasterization stage
 		configInfo.rasterizationInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
@@ -228,6 +214,13 @@ namespace vge {
 		configInfo.depthStencilInfo.front = {};  // Optional
 		configInfo.depthStencilInfo.back = {};   // Optional
 
-		return configInfo;
+		configInfo.dynamicStateEnables = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR };
+		configInfo.dynamicStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
+		configInfo.dynamicStateInfo.pDynamicStates = configInfo.dynamicStateEnables.data();
+		configInfo.dynamicStateInfo.dynamicStateCount =
+			static_cast<uint32_t>(configInfo.dynamicStateEnables.size());
+		configInfo.dynamicStateInfo.flags = 0;
+
+
 	}
 }

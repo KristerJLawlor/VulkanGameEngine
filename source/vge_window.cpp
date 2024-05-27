@@ -17,10 +17,12 @@ namespace vge {
 	void VgeWindow::initWindow() {
 		glfwInit();	//initialize the GLFW Library
 		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);	//tell GLFW to not make OpenGL context when initialized
-		glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);		//disable window from being resized
+		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);		//disable window from being resized
 
 		//initialize window pointer by calling the GLFW Create Window command
 		window = glfwCreateWindow(width, height, windowName.c_str(), nullptr, nullptr);	//copy constructor must be deleted after invokation
+		glfwSetWindowUserPointer(window, this);
+		glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
 	}
 
 	void VgeWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface)
@@ -29,5 +31,12 @@ namespace vge {
 		{
 			throw std::runtime_error("failed to create window surface");
 		}
+	}
+
+	void VgeWindow::framebufferResizeCallback(GLFWwindow* window, int width, int height) {
+		auto vgeWindow = reinterpret_cast<VgeWindow*>(glfwGetWindowUserPointer(window));
+		vgeWindow->framebufferResized = true;
+		vgeWindow->width = width;
+		vgeWindow->height = height;
 	}
 }

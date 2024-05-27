@@ -29,11 +29,6 @@ namespace vge {
 			VgeApp& operator=(const VgeApp&) = delete;
 
 			void run();
-			void Sierpinski(std::vector<VgeModel::Vertex> &vertices,
-				int depth,
-				glm::vec2 left,
-				glm::vec2 right,
-				glm::vec2 top);
 
 		private:
 		//functions
@@ -41,12 +36,15 @@ namespace vge {
 			void createPipelineLayout();
 			void createPipeline();
 			void createCommandBuffers();
+			void freeCommandBuffers();
 			void drawFrame();
+			void recreateSwapChain();
+			void recordCommandBuffer(int imageIndex);
 
 		//members
 			VgeWindow vgeWindow{ WIDTH, HEIGHT, "Hello Vulkan!" };
 			VgeDevice vgeDevice{ vgeWindow };
-			VgeSwapChain vgeSwapChain{ vgeDevice, vgeWindow.getExtent() };
+			std::unique_ptr<VgeSwapChain> vgeSwapChain;
 
 			std::unique_ptr<VgePipeline> vgePipeline;
 			VkPipelineLayout pipelineLayout;

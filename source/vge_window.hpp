@@ -21,14 +21,19 @@ namespace vge {
 
 		VkExtent2D getExtent() { return { static_cast<uint32_t>(width), static_cast<uint32_t>(height) }; }
 
+		bool wasWindowResized() { return framebufferResized; }
+		void resetWindowResizedFlag() { framebufferResized = false; }
+
 		void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 
 	private:
 
+		static void framebufferResizeCallback(GLFWwindow* window, int width, int height);
 		void initWindow();	//helper function to initialize window
 
-		const int width;
-		const int height;
+		int width;
+		int height;
+		bool framebufferResized = false;
 
 		std::string windowName;
 		GLFWwindow* window;	//pointer to a GLFWWindow object
