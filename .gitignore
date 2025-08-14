@@ -43,3 +43,8 @@ Thumbs.db
 *.user
 *.ncb
 *.sbr
+*.vs
+
+# Directories #
+##########################
+x64/

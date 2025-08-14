@@ -23,7 +23,8 @@ VkResult CreateDebugUtilsMessengerEXT(
     VkInstance instance,
     const VkDebugUtilsMessengerCreateInfoEXT *pCreateInfo,
     const VkAllocationCallbacks *pAllocator,
-    VkDebugUtilsMessengerEXT *pDebugMessenger) {
+    VkDebugUtilsMessengerEXT *pDebugMessenger) 
+{
   auto func = (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(
       instance,
       "vkCreateDebugUtilsMessengerEXT");
@@ -34,10 +35,12 @@ VkResult CreateDebugUtilsMessengerEXT(
   }
 }
 
+
 void DestroyDebugUtilsMessengerEXT(
     VkInstance instance,
     VkDebugUtilsMessengerEXT debugMessenger,
-    const VkAllocationCallbacks *pAllocator) {
+    const VkAllocationCallbacks *pAllocator) 
+{
   auto func = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(
       instance,
       "vkDestroyDebugUtilsMessengerEXT");
@@ -46,8 +49,10 @@ void DestroyDebugUtilsMessengerEXT(
   }
 }
 
-// class member functions
-VgeDevice::VgeDevice(VgeWindow &window) : window{window} {
+
+// All methods are called when this VgeDevice object is constructed
+VgeDevice::VgeDevice(VgeWindow &window) : window{window} 
+{
   createInstance(); //create Vulkan instance to initialize vulkan library. Links connection between Vulkan and our application
   setupDebugMessenger(); //set up validation layers to catch errors that Vulkan doesn't
   createSurface();  //create surface that relies on glfw. Connection between window and Vulkan
@@ -56,7 +61,9 @@ VgeDevice::VgeDevice(VgeWindow &window) : window{window} {
   createCommandPool();  //set up command pool for command buffer allocation
 }
 
-VgeDevice::~VgeDevice() {
+
+VgeDevice::~VgeDevice() 
+{
   vkDestroyCommandPool(device_, commandPool, nullptr);
   vkDestroyDevice(device_, nullptr);
 
@@ -68,7 +75,10 @@ VgeDevice::~VgeDevice() {
   vkDestroyInstance(instance, nullptr);
 }
 
-void VgeDevice::createInstance() {
+
+//Initialize a Vulkan Instance
+void VgeDevice::createInstance() 
+{
   if (enableValidationLayers && !checkValidationLayerSupport()) {
     throw std::runtime_error("validation layers requested, but not available!");
   }
@@ -108,7 +118,9 @@ void VgeDevice::createInstance() {
   hasGflwRequiredInstanceExtensions();
 }
 
-void VgeDevice::pickPhysicalDevice() {
+
+void VgeDevice::pickPhysicalDevice() 
+{
   uint32_t deviceCount = 0;
   vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
   if (deviceCount == 0) {
@@ -133,7 +145,9 @@ void VgeDevice::pickPhysicalDevice() {
   std::cout << "physical device: " << properties.deviceName << std::endl;
 }
 
-void VgeDevice::createLogicalDevice() {
+
+void VgeDevice::createLogicalDevice() 
+{
   QueueFamilyIndices indices = findQueueFamilies(physicalDevice);
 
   std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
@@ -179,7 +193,9 @@ void VgeDevice::createLogicalDevice() {
   vkGetDeviceQueue(device_, indices.presentFamily, 0, &presentQueue_);
 }
 
-void VgeDevice::createCommandPool() {
+
+void VgeDevice::createCommandPool() 
+{
   QueueFamilyIndices queueFamilyIndices = findPhysicalQueueFamilies();
 
   VkCommandPoolCreateInfo poolInfo = {};
@@ -193,9 +209,12 @@ void VgeDevice::createCommandPool() {
   }
 }
 
+
 void VgeDevice::createSurface() { window.createWindowSurface(instance, &surface_); }
 
-bool VgeDevice::isDeviceSuitable(VkPhysicalDevice device) {
+
+bool VgeDevice::isDeviceSuitable(VkPhysicalDevice device) 
+{
   QueueFamilyIndices indices = findQueueFamilies(device);
 
   bool extensionsSupported = checkDeviceExtensionSupport(device);
@@ -213,8 +232,10 @@ bool VgeDevice::isDeviceSuitable(VkPhysicalDevice device) {
          supportedFeatures.samplerAnisotropy;
 }
 
+
 void VgeDevice::populateDebugMessengerCreateInfo(
-    VkDebugUtilsMessengerCreateInfoEXT &createInfo) {
+    VkDebugUtilsMessengerCreateInfoEXT &createInfo) 
+{
   createInfo = {};
   createInfo.sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
   createInfo.messageSeverity = VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT |
@@ -235,7 +256,9 @@ void VgeDevice::setupDebugMessenger() {
   }
 }
 
-bool VgeDevice::checkValidationLayerSupport() {
+
+bool VgeDevice::checkValidationLayerSupport() 
+{
   uint32_t layerCount;
   vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
 
@@ -260,6 +283,7 @@ bool VgeDevice::checkValidationLayerSupport() {
   return true;
 }
 
+
 std::vector<const char *> VgeDevice::getRequiredExtensions() {
   uint32_t glfwExtensionCount = 0;
   const char **glfwExtensions;
@@ -274,7 +298,9 @@ std::vector<const char *> VgeDevice::getRequiredExtensions() {
   return extensions;
 }
 
-void VgeDevice::hasGflwRequiredInstanceExtensions() {
+
+void VgeDevice::hasGflwRequiredInstanceExtensions() 
+{
   uint32_t extensionCount = 0;
   vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
   std::vector<VkExtensionProperties> extensions(extensionCount);
@@ -297,7 +323,9 @@ void VgeDevice::hasGflwRequiredInstanceExtensions() {
   }
 }
 
-bool VgeDevice::checkDeviceExtensionSupport(VkPhysicalDevice device) {
+
+bool VgeDevice::checkDeviceExtensionSupport(VkPhysicalDevice device) 
+{
   uint32_t extensionCount;
   vkEnumerateDeviceExtensionProperties(device, nullptr, &extensionCount, nullptr);
 
@@ -317,7 +345,9 @@ bool VgeDevice::checkDeviceExtensionSupport(VkPhysicalDevice device) {
   return requiredExtensions.empty();
 }
 
-QueueFamilyIndices VgeDevice::findQueueFamilies(VkPhysicalDevice device) {
+
+QueueFamilyIndices VgeDevice::findQueueFamilies(VkPhysicalDevice device) 
+{
   QueueFamilyIndices indices;
 
   uint32_t queueFamilyCount = 0;
@@ -348,7 +378,9 @@ QueueFamilyIndices VgeDevice::findQueueFamilies(VkPhysicalDevice device) {
   return indices;
 }
 
-SwapChainSupportDetails VgeDevice::querySwapChainSupport(VkPhysicalDevice device) {
+
+SwapChainSupportDetails VgeDevice::querySwapChainSupport(VkPhysicalDevice device) 
+{
   SwapChainSupportDetails details;
   vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, surface_, &details.capabilities);
 
@@ -374,9 +406,12 @@ SwapChainSupportDetails VgeDevice::querySwapChainSupport(VkPhysicalDevice device
   return details;
 }
 
+
 VkFormat VgeDevice::findSupportedFormat(
-    const std::vector<VkFormat> &candidates, VkImageTiling tiling, VkFormatFeatureFlags features) {
-  for (VkFormat format : candidates) {
+    const std::vector<VkFormat> &candidates, VkImageTiling tiling, VkFormatFeatureFlags features) 
+{
+  for (VkFormat format : candidates) 
+  {
     VkFormatProperties props;
     vkGetPhysicalDeviceFormatProperties(physicalDevice, format, &props);
 
@@ -390,7 +425,9 @@ VkFormat VgeDevice::findSupportedFormat(
   throw std::runtime_error("failed to find supported format!");
 }
 
-uint32_t VgeDevice::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties) {
+
+uint32_t VgeDevice::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties) 
+{
   VkPhysicalDeviceMemoryProperties memProperties;
   vkGetPhysicalDeviceMemoryProperties(physicalDevice, &memProperties);
   for (uint32_t i = 0; i < memProperties.memoryTypeCount; i++) {
@@ -403,12 +440,14 @@ uint32_t VgeDevice::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags pr
   throw std::runtime_error("failed to find suitable memory type!");
 }
 
+
 void VgeDevice::createBuffer(
     VkDeviceSize size,
     VkBufferUsageFlags usage,
     VkMemoryPropertyFlags properties,
     VkBuffer &buffer,
-    VkDeviceMemory &bufferMemory) {
+    VkDeviceMemory &bufferMemory) 
+{
   VkBufferCreateInfo bufferInfo{};
   bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
   bufferInfo.size = size;
@@ -434,7 +473,9 @@ void VgeDevice::createBuffer(
   vkBindBufferMemory(device_, buffer, bufferMemory, 0);
 }
 
-VkCommandBuffer VgeDevice::beginSingleTimeCommands() {
+
+VkCommandBuffer VgeDevice::beginSingleTimeCommands() 
+{
   VkCommandBufferAllocateInfo allocInfo{};
   allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
   allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
@@ -452,7 +493,9 @@ VkCommandBuffer VgeDevice::beginSingleTimeCommands() {
   return commandBuffer;
 }
 
-void VgeDevice::endSingleTimeCommands(VkCommandBuffer commandBuffer) {
+
+void VgeDevice::endSingleTimeCommands(VkCommandBuffer commandBuffer) 
+{
   vkEndCommandBuffer(commandBuffer);
 
   VkSubmitInfo submitInfo{};
@@ -466,7 +509,9 @@ void VgeDevice::endSingleTimeCommands(VkCommandBuffer commandBuffer) {
   vkFreeCommandBuffers(device_, commandPool, 1, &commandBuffer);
 }
 
-void VgeDevice::copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) {
+
+void VgeDevice::copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) 
+{
   VkCommandBuffer commandBuffer = beginSingleTimeCommands();
 
   VkBufferCopy copyRegion{};
@@ -477,6 +522,7 @@ void VgeDevice::copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize 
 
   endSingleTimeCommands(commandBuffer);
 }
+
 
 void VgeDevice::copyBufferToImage(
     VkBuffer buffer, VkImage image, uint32_t width, uint32_t height, uint32_t layerCount) {
@@ -505,11 +551,13 @@ void VgeDevice::copyBufferToImage(
   endSingleTimeCommands(commandBuffer);
 }
 
+
 void VgeDevice::createImageWithInfo(
     const VkImageCreateInfo &imageInfo,
     VkMemoryPropertyFlags properties,
     VkImage &image,
-    VkDeviceMemory &imageMemory) {
+    VkDeviceMemory &imageMemory) 
+{
   if (vkCreateImage(device_, &imageInfo, nullptr, &image) != VK_SUCCESS) {
     throw std::runtime_error("failed to create image!");
   }

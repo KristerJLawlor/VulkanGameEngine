@@ -33,6 +33,7 @@ namespace vge {
       VgeDevice(VgeWindow &window);
       ~VgeDevice();
 
+
       // Not copyable or movable
       VgeDevice(const VgeDevice &) = delete;
       VgeDevice &operator=(const VgeDevice &) = delete;
@@ -50,6 +51,7 @@ namespace vge {
       QueueFamilyIndices findPhysicalQueueFamilies() { return findQueueFamilies(physicalDevice); }
       VkFormat findSupportedFormat(
           const std::vector<VkFormat> &candidates, VkImageTiling tiling, VkFormatFeatureFlags features);
+
 
       // Buffer Helper Functions
       void createBuffer(
@@ -90,7 +92,8 @@ namespace vge {
       bool checkDeviceExtensionSupport(VkPhysicalDevice device);
       SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
 
-      VkInstance instance;
+      // Vulkan variables
+	  VkInstance instance;  //handle to a Vulkan instance object
       VkDebugUtilsMessengerEXT debugMessenger;
       VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
       VgeWindow &window;

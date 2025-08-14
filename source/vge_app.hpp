@@ -43,7 +43,7 @@ namespace vge {
 
 		//members
 			VgeWindow vgeWindow{ WIDTH, HEIGHT, "Hello Vulkan!" };
-			VgeDevice vgeDevice{ vgeWindow };
+			VgeDevice vgeDevice{ vgeWindow };	//VgeDevice object that will be used to create the Vulkan instance
 			std::unique_ptr<VgeSwapChain> vgeSwapChain;
 
 			std::unique_ptr<VgePipeline> vgePipeline;

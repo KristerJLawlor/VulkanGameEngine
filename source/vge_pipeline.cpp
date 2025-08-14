@@ -10,7 +10,7 @@
 
 namespace vge {
 
-	//graphics pipeline constructor
+	//Will call the helper function and pass parameters to the graphics pipeline constructor
 	VgePipeline::VgePipeline(
 		VgeDevice& device,
 		const std::string& vertFilepath,
@@ -26,8 +26,9 @@ namespace vge {
 		vkDestroyPipeline(vgeDevice.device(), graphicsPipeline, nullptr);
 	}
 
+	//We need to read the compiled shader files from disk, so we can create the shader modules
 	std::vector<char> VgePipeline::readFile(const std::string& filepath) {
-		//make input file stream object to read file
+		//make input file stream object to read compiled shader files
 		std::ifstream file{ filepath, std::ios::ate | std::ios::binary };
 
 		//check if file was successfully opened
@@ -48,7 +49,8 @@ namespace vge {
 	void VgePipeline::createGraphicsPipeline(
 			const std::string& vertFilepath, 
 			const std::string& fragFilepath,
-			const PipelineConfigInfo& configInfo) {
+			const PipelineConfigInfo& configInfo) 
+	{
 			
 		//help debug validation layers
 		assert(configInfo.pipelineLayout != VK_NULL_HANDLE &&

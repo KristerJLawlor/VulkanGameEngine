@@ -45,7 +45,7 @@ namespace vge {
 		static void defaultPipelineConfigInfo(PipelineConfigInfo& configInfo);
 
 	private:
-		//function to read file
+		//function to read shader files
 		static std::vector<char> readFile(const std::string& filepath);
 
 		//helper function
@@ -54,9 +54,10 @@ namespace vge {
 			const std::string& fragFilepath, 
 			const PipelineConfigInfo& configInfo);
 
+		//create Module for vertex and fragment shaders and initialize the variable. VkShaderModule is a pointer to a pointer to a shader module object
 		void createShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule);
 
-		VgeDevice& vgeDevice;	//stores device reference
+		VgeDevice& vgeDevice;	//stores device reference. A reference instead of a pointer to avoid dangling pointers
 		VkPipeline graphicsPipeline;	//handle to vulkan pipeline object
 		VkShaderModule vertShadermodule;
 		VkShaderModule fragShadermodule;
