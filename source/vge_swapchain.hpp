@@ -17,7 +17,7 @@ namespace vge {
         static constexpr int MAX_FRAMES_IN_FLIGHT = 2;  //limits 2 command buffers to the devices graphics queue at once
 
         VgeSwapChain(VgeDevice& deviceRef, VkExtent2D windowExtent);
-        VgeSwapChain(VgeDevice& deviceRef, VkExtent2D windowExtent, std::shared_ptr<VgeSwapChain> previous);
+        VgeSwapChain(VgeDevice& deviceRef, VkExtent2D windowExtent, std::shared_ptr<VgeSwapChain> previous);    //used to create the new swap chain
         ~VgeSwapChain();
 
         VgeSwapChain(const VgeSwapChain&) = delete;
@@ -81,4 +81,14 @@ namespace vge {
         size_t currentFrame = 0;
     };
 
-}  // namespace lve
+}  // namespace vge
+
+/*
+The Swap Chain is a series of framebuffers that are used to render images to the screen. 
+Double Buffering draws an image from Buffer 0 to the screen, while Buffer 1 is being rendered to.
+When Buffer 1 is done rendering, it will be swapped with Buffer 0, and the process continues.
+This can create visual hiccups or waste valuable time onthe hardware if a frame takes longer to render than the refresh rate of the display.
+
+Triple Buffering adds a third buffer to the mix, which makes for 1 front buffer and 2 back buffers. 
+It requires more VRAM, but makes sure the hardware is always rendering a frame behind the scenes for a smoother experience.
+*/

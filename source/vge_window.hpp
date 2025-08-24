@@ -33,7 +33,7 @@ namespace vge {
 
 		int width;
 		int height;
-		bool framebufferResized = false;
+		bool framebufferResized = false;	//used as a flag to indicate the window has been resized
 
 		std::string windowName;
 		GLFWwindow* window;	//pointer to a GLFWWindow object

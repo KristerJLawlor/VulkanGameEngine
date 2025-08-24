@@ -8,12 +8,15 @@
 
 namespace vge {
 
-// local callback functions
+        //////////////////////////// local callback functions ////////////////////////
+        
+// Callback function for validation layers
 static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
     VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
     VkDebugUtilsMessageTypeFlagsEXT messageType,
     const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData,
-    void *pUserData) {
+    void *pUserData) 
+{
   std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
 
   return VK_FALSE;
@@ -44,7 +47,8 @@ void DestroyDebugUtilsMessengerEXT(
   auto func = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(
       instance,
       "vkDestroyDebugUtilsMessengerEXT");
-  if (func != nullptr) {
+  if (func != nullptr) 
+  {
     func(instance, debugMessenger, pAllocator);
   }
 }
@@ -83,6 +87,7 @@ void VgeDevice::createInstance()
     throw std::runtime_error("validation layers requested, but not available!");
   }
 
+  // Create a struct containing the application info structure
   VkApplicationInfo appInfo = {};
   appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
   appInfo.pApplicationName = "LittleVulkanEngine App";
@@ -91,10 +96,13 @@ void VgeDevice::createInstance()
   appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
   appInfo.apiVersion = VK_API_VERSION_1_0;
 
+  // Create a struct containing the global extensions and validation layers we wish to use. 
+  // Global meaning it applies to the entire application, not a specific device or surface.
   VkInstanceCreateInfo createInfo = {};
   createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
   createInfo.pApplicationInfo = &appInfo;
 
+  // Get the required extensions for GLFW and add validation layers if enabled
   auto extensions = getRequiredExtensions();
   createInfo.enabledExtensionCount = static_cast<uint32_t>(extensions.size());
   createInfo.ppEnabledExtensionNames = extensions.data();
@@ -247,10 +255,13 @@ void VgeDevice::populateDebugMessengerCreateInfo(
   createInfo.pUserData = nullptr;  // Optional
 }
 
-void VgeDevice::setupDebugMessenger() {
+
+void VgeDevice::setupDebugMessenger() 
+{
   if (!enableValidationLayers) return;
   VkDebugUtilsMessengerCreateInfoEXT createInfo;
   populateDebugMessengerCreateInfo(createInfo);
+
   if (CreateDebugUtilsMessengerEXT(instance, &createInfo, nullptr, &debugMessenger) != VK_SUCCESS) {
     throw std::runtime_error("failed to set up debug messenger!");
   }
@@ -284,6 +295,7 @@ bool VgeDevice::checkValidationLayerSupport()
 }
 
 
+// Get the required extensions for GLFW and add validation layers if enabled
 std::vector<const char *> VgeDevice::getRequiredExtensions() {
   uint32_t glfwExtensionCount = 0;
   const char **glfwExtensions;
@@ -440,7 +452,7 @@ uint32_t VgeDevice::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags pr
   throw std::runtime_error("failed to find suitable memory type!");
 }
 
-
+// helper function to create a buffer and return the buffer and its associated memory
 void VgeDevice::createBuffer(
     VkDeviceSize size,
     VkBufferUsageFlags usage,

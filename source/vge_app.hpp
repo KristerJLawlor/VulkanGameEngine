@@ -14,7 +14,9 @@
 
 namespace vge {
 	class VgeApp {
+		//This class is the main application class that will handle the window, device, swap chain, pipeline, and command buffers.
 		public:
+
 		//members
 			static constexpr int WIDTH = 800;
 			static constexpr int HEIGHT = 600;
@@ -31,6 +33,17 @@ namespace vge {
 			void run();
 
 		private:
+
+		//members
+			VgeWindow vgeWindow{ WIDTH, HEIGHT, "Hello Vulkan!" };
+			VgeDevice vgeDevice{ vgeWindow };	//VgeDevice object that will be used to create the Vulkan instance
+			std::unique_ptr<VgeSwapChain> vgeSwapChain;	//Use pointer instead of stack allocated variable, we can recreate the swap chain with a new W x H more easily
+
+			std::unique_ptr<VgePipeline> vgePipeline;
+			VkPipelineLayout pipelineLayout;
+			std::vector<VkCommandBuffer> commandBuffers;
+			std::unique_ptr<VgeModel> vgeModel;
+
 		//functions
 			void loadModels();
 			void createPipelineLayout();
@@ -41,14 +54,6 @@ namespace vge {
 			void recreateSwapChain();
 			void recordCommandBuffer(int imageIndex);
 
-		//members
-			VgeWindow vgeWindow{ WIDTH, HEIGHT, "Hello Vulkan!" };
-			VgeDevice vgeDevice{ vgeWindow };	//VgeDevice object that will be used to create the Vulkan instance
-			std::unique_ptr<VgeSwapChain> vgeSwapChain;
 
-			std::unique_ptr<VgePipeline> vgePipeline;
-			VkPipelineLayout pipelineLayout;
-			std::vector<VkCommandBuffer> commandBuffers;
-			std::unique_ptr<VgeModel> vgeModel;
 	};
 }

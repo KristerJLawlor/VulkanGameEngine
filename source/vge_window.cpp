@@ -33,7 +33,8 @@ namespace vge {
 		}
 	}
 
-	void VgeWindow::framebufferResizeCallback(GLFWwindow* window, int width, int height) {
+	void VgeWindow::framebufferResizeCallback(GLFWwindow* window, int width, int height) 
+	{
 		auto vgeWindow = reinterpret_cast<VgeWindow*>(glfwGetWindowUserPointer(window));
 		vgeWindow->framebufferResized = true;
 		vgeWindow->width = width;

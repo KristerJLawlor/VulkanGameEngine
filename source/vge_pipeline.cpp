@@ -20,6 +20,7 @@ namespace vge {
 			createGraphicsPipeline(vertFilepath, fragFilepath, configInfo);
 	}
 
+	//Destructor for the VgePipeline class. It will destroy the shader modules and graphics pipeline
 	VgePipeline::~VgePipeline() {
 		vkDestroyShaderModule(vgeDevice.device(), vertShadermodule, nullptr);
 		vkDestroyShaderModule(vgeDevice.device(), fragShadermodule, nullptr);
@@ -57,6 +58,8 @@ namespace vge {
 			"Cannot create graphics pipeline:: no pipelineLayout provided in configInfo");
 		assert(configInfo.renderPass != VK_NULL_HANDLE &&
 			"Cannot create graphics pipeline:: no renderPass provided in configInfo");
+
+		//create shader modules for vertex and fragment shaders
 		auto vertCode = readFile(vertFilepath);
 		auto fragCode = readFile(fragFilepath);
 
@@ -64,11 +67,12 @@ namespace vge {
 		createShaderModule(vertCode, &vertShadermodule);
 		createShaderModule(fragCode, &fragShadermodule);
 
+		//Create VkPipelineShaderStageCreateInfo array to hold structs for each shader stage
 		VkPipelineShaderStageCreateInfo shaderStages[2];
 		shaderStages[0].sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
 		shaderStages[0].stage = VK_SHADER_STAGE_VERTEX_BIT;	//specify stage 0 is for vertex shader
 		shaderStages[0].module = vertShadermodule;
-		shaderStages[0].pName = "main";
+		shaderStages[0].pName = "main";	//name of the entry point function in the shader code
 		shaderStages[0].flags = 0;
 		shaderStages[0].pNext = nullptr;
 		shaderStages[0].pSpecializationInfo = nullptr;
@@ -82,6 +86,8 @@ namespace vge {
 
 		auto bindingDescriptions = VgeModel::Vertex::getBindingDescriptions();
 		auto attributeDescriptions = VgeModel::Vertex::getAttributeDescriptions();
+
+		//create vertex input state info struct. This struct describes how to interpret the vertex buffer data
 		VkPipelineVertexInputStateCreateInfo vertexInputInfo{};	//struct used to describe how to interpret vertex buffer data
 		vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 		vertexInputInfo.vertexAttributeDescriptionCount =
@@ -91,7 +97,7 @@ namespace vge {
 		vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 		vertexInputInfo.pVertexBindingDescriptions = bindingDescriptions.data();
 
-		//will use all above info to make the graphics pipeline object
+		//will use all above configuration to make the graphics pipeline object
 		VkGraphicsPipelineCreateInfo pipelineInfo{};
 		pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
 		pipelineInfo.stageCount = 2;
@@ -110,6 +116,7 @@ namespace vge {
 		pipelineInfo.renderPass = configInfo.renderPass;
 		pipelineInfo.subpass = configInfo.subpass;
 
+		//used to optimize performance by reusing existing pipelines
 		pipelineInfo.basePipelineIndex = -1;
 		pipelineInfo.basePipelineHandle = VK_NULL_HANDLE;
 
@@ -145,10 +152,13 @@ namespace vge {
 	}
 
 
-	//input assembler takes list of vertices and groups them in to geometry
-	void VgePipeline::defaultPipelineConfigInfo(PipelineConfigInfo &configInfo) {
+	//helper Function for the Fixed Function Pipeline stages
+	//Fixed Function Pipeline stages are the stages that do not require shaders to be written, such as input assembly, rasterization, etc.
+	void VgePipeline::defaultPipelineConfigInfo(PipelineConfigInfo &configInfo) 
+	{
 
 		//define the input assembly behavior 
+		//input assembler takes list of vertices and groups them in to geometry
 		configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 		configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;	//specifies how the list will be interpreted. In this case, it will form triangles with given vertices
 		configInfo.inputAssemblyInfo.primitiveRestartEnable = VK_FALSE;	//tell the list to produce only connected triangle strip if false. True if desire separate triangles
@@ -165,7 +175,7 @@ namespace vge {
 		configInfo.rasterizationInfo.rasterizerDiscardEnable = VK_FALSE;
 		configInfo.rasterizationInfo.polygonMode = VK_POLYGON_MODE_FILL;//defines if we fill the geometry or not
 		configInfo.rasterizationInfo.lineWidth = 1.0f;
-		configInfo.rasterizationInfo.cullMode = VK_CULL_MODE_NONE; //defines what side of the geometry will be culled
+		configInfo.rasterizationInfo.cullMode = VK_CULL_MODE_NONE; //defines what side of the geometry will be culled based on the perceived rotations of the geometry
 		configInfo.rasterizationInfo.frontFace = VK_FRONT_FACE_CLOCKWISE;
 		configInfo.rasterizationInfo.depthBiasEnable = VK_FALSE;
 		configInfo.rasterizationInfo.depthBiasConstantFactor = 0.0f;  // Optional

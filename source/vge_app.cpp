@@ -13,24 +13,30 @@
 
 namespace vge {
 
-	struct SimplePushConstantData {
+	struct SimplePushConstantData 
+	{
 		glm::vec2 offset;
 		alignas(16) glm::vec3 color;
 	};
 
-	VgeApp::VgeApp() {
-		loadModels();
-		createPipelineLayout();
-		recreateSwapChain();
-		createCommandBuffers();
+
+	VgeApp::VgeApp() 
+	{
+		loadModels();	//load in the models for our application
+		createPipelineLayout();	//predefines the pipeline layout for the shaders
+		recreateSwapChain();	//creates the swap chain, then creates the pipeline
+		createCommandBuffers();	//creates the command buffers for the swap chain images
 	}
 
-	VgeApp::~VgeApp() {
+
+	VgeApp::~VgeApp() 
+	{
 		vkDestroyPipelineLayout(vgeDevice.device(), pipelineLayout, nullptr);
 	}
 
-	void VgeApp::run() {
 
+	void VgeApp::run() 
+	{
 		while (!vgeWindow.shouldClose()) {
 			glfwPollEvents();
 			drawFrame();
@@ -39,7 +45,9 @@ namespace vge {
 		vkDeviceWaitIdle(vgeDevice.device());
 	}
 
-	void VgeApp::loadModels() {
+
+	void VgeApp::loadModels() 
+	{
 		std::vector<VgeModel::Vertex> vertices{
 	  {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
 	  {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
@@ -48,7 +56,9 @@ namespace vge {
 		vgeModel = std::make_unique<VgeModel>(vgeDevice, vertices);
 	}
 
-	void VgeApp::createPipelineLayout() {
+
+	void VgeApp::createPipelineLayout() 
+	{
 
 		VkPushConstantRange pushConstantRange{};
 		pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
@@ -68,7 +78,9 @@ namespace vge {
 		}
 	}
 
-	void VgeApp::recreateSwapChain() {
+	//Called when a window resize is detected
+	void VgeApp::recreateSwapChain() 
+	{
 		auto extent = vgeWindow.getExtent();
 		while (extent.width == 0 || extent.height == 0) {
 			extent = vgeWindow.getExtent();
@@ -90,7 +102,9 @@ namespace vge {
 		createPipeline();
 	}
 
-	void VgeApp::createPipeline() {
+
+	void VgeApp::createPipeline() 
+	{
 
 		assert(vgeSwapChain != nullptr && "Cannot create pipeline before swap chain");
 		assert(pipelineLayout != nullptr && "Cannot create pipeline before pipeline layout");
@@ -106,7 +120,9 @@ namespace vge {
 			pipelineConfig);
 	}
 
-	void VgeApp::freeCommandBuffers() {
+
+	void VgeApp::freeCommandBuffers() 
+	{
 		vkFreeCommandBuffers(
 			vgeDevice.device(),
 			vgeDevice.getCommandPool(),
@@ -116,10 +132,15 @@ namespace vge {
 		commandBuffers.clear();
 	}
 
-	void VgeApp::createCommandBuffers() {
-
+	//Command buffers allow sequence of commands to be recorded and submitted to the GPU for execution.
+	//Can be reused for multiple frames, which is more efficient than recording commands every frame (OpenGL does this).
+	void VgeApp::createCommandBuffers() 
+	{
+		//resize the command buffers vector to the size of swap chain image count
+		//2 for double buffering, 3 for triple buffering, etc.
 		commandBuffers.resize(vgeSwapChain->imageCount());
 
+		//Allocate command buffers
 		VkCommandBufferAllocateInfo allocInfo{};
 		allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
 		allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
@@ -133,7 +154,9 @@ namespace vge {
 		}
 	}
 
-	void VgeApp::recordCommandBuffer(int imageIndex) {
+
+	void VgeApp::recordCommandBuffer(int imageIndex) 
+	{
 
 		static int frame = 30;
 		frame = (frame + 1) % 100;
@@ -145,6 +168,7 @@ namespace vge {
 			throw std::runtime_error("failed to begin recording command buffer!");
 		}
 
+		//First command to record is the render pass begin command.
 		VkRenderPassBeginInfo renderPassInfo{};
 		renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
 		renderPassInfo.renderPass = vgeSwapChain->getRenderPass();
@@ -174,7 +198,7 @@ namespace vge {
 		vkCmdSetViewport(commandBuffers[imageIndex], 0, 1, &viewport);
 		vkCmdSetScissor(commandBuffers[imageIndex], 0, 1, &scissor);
 
-		vgePipeline->bind(commandBuffers[imageIndex]);
+		vgePipeline->bind(commandBuffers[imageIndex]);	//binds the pipeline using function in vge_pipeline.cpp
 		vgeModel->bind(commandBuffers[imageIndex]);
 
 		for (int j = 0; j < 4; j++) {
@@ -198,7 +222,9 @@ namespace vge {
 		}
 	}
 
-	void VgeApp::drawFrame() {
+
+	void VgeApp::drawFrame() 
+	{
 		uint32_t imageIndex;
 		auto result = vgeSwapChain->acquireNextImage(&imageIndex);
 
@@ -210,7 +236,11 @@ namespace vge {
 			throw std::runtime_error("failed to acquire swap chain image!");
 		}
 
-		recordCommandBuffer(imageIndex);
+		recordCommandBuffer(imageIndex);	//Must record command buffer before submitting it to the queue.
+
+		// submit the provided command buffer to the graphics device queue
+		// while handling CPU and GPU synchronization. 
+		// The command buffer will then be executed followed by the Swap Chain will present the associated image to the screen.
 		result = vgeSwapChain->submitCommandBuffers(&commandBuffers[imageIndex], &imageIndex);
 		if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR ||
 			vgeWindow.wasWindowResized()) {

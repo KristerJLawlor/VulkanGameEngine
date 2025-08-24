@@ -215,6 +215,8 @@ namespace vge {
         }
     }
 
+	//Render Pass describes the structure and format of the framebuffer objects and their attachments
+	//Esesentially, it is a blueprint desribing to the graphics pipeline object what layout to expect for the output frame buffer
     void VgeSwapChain::createRenderPass() {
         VkAttachmentDescription depthAttachment{};
         depthAttachment.format = findDepthFormat();

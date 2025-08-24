@@ -10,6 +10,7 @@ int main() {
 
 	try {
 		app.run();	//run app to spawn window
+
 	}
 	catch (const std::exception &e) {
 		std::cerr << e.what() << '\n';
@@ -18,6 +19,28 @@ int main() {
 
 	return EXIT_SUCCESS;
 }
+
+	/*
+	1: Create a VgeApp object (contains window dimensions), 
+		which creates a SwapChain, Pipeline, and Command Buffers, and loads Models.
+		The VgeApp constructor will also create a VgeDevice object with the window dimensions, 
+		   
+	2: When the VgeDevice is instantiated alongside the VgeApp, it will
+		create a Vulkan instance, set up validation layers, create a surface,
+		pick a physical device, and create a logical device.
+		The VgeDevice constructor will also create a command pool for command buffer allocation.
+
+	3: run() will create a window and start the main loop, polling for events and drawing frames.
+
+	*/
+
+	/*
+	The general pattern that object creation function parameters in Vulkan follow is:
+		-Pointer to struct with creation info
+		-Pointer to custom allocator callbacks, usually nullptr in this project
+		-Pointer to the variable that stores the handle to the new object
+	*/
+
 
 /*
 Graphics Pipeline:
